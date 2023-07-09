@@ -37,6 +37,22 @@ Route::get('/employee-dashboard', function () {
     return view('employee-dashboard');
 })->middleware(['auth'])->name('employee.dashboard');
 
+Route::group(['prefix'=>'employee'],function(){
+    Route::view('available-projects', 'available-projects');
+    Route::view('participation', 'participation');
+    Route::view('attendance', 'attendance');
+    Route::view('tickets', 'tickets');
+});
+
+Route::group(['prefix'=>'manager'],function(){
+    Route::view('projects', 'projects');
+    Route::view('initiate-project', 'initiate-project');
+    Route::view('resolve-tickets', 'resolve-tickets');
+    Route::view('employee-attendance', 'employee-attendance');
+});
+
+
+
 Route::get('/manager-dashboard', function () {
     return view('manager-dashboard');
 })->middleware(['auth'])->name('manager.dashboard');
